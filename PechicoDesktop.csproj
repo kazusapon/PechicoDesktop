@@ -5,10 +5,12 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.2" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
 </Project>
