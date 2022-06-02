@@ -14,19 +14,15 @@ namespace PechicoDesktop
     /// </summary>
     public partial class App : Application
     {
-
-        //private System.Windows.Forms.NotifyIcon notifyIcon;
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            var icon = GetResourceStream(new Uri("img/pechico.ico", UriKind.Relative)).Stream;
-
             var contextMenu = new System.Windows.Forms.ContextMenuStrip();
-            contextMenu.Items.Add("終了");
-
-           var notifyIcon = new System.Windows.Forms.NotifyIcon
+            contextMenu.Items.Add("Application Setting", null, ApplicationSettiong_Click);
+            contextMenu.Items.Add("Quit PechicoDesktop", null, Exit_Click);
+            
+            var notifyIcon = new System.Windows.Forms.NotifyIcon
             {
                 Visible = true,
                 Text = "test",
@@ -34,7 +30,7 @@ namespace PechicoDesktop
                 ContextMenuStrip = contextMenu
             };
 
-            //notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(NotifyIcon_Click);
+            //notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(NotifyIcon_Click);
 
         }
 
@@ -44,6 +40,11 @@ namespace PechicoDesktop
             {
                 new PechicoDesktop.MainWindow().Show();
             }
+        }
+
+        private void ApplicationSettiong_Click(object sender, EventArgs e)
+        {
+            Application.Current.Shutdown();
         }
 
         private void Exit_Click(object sender, EventArgs e)
