@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:PechicoDesktop"
         xmlns:materialDesignMahApps="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="PechicoDesktop.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="900" Width="1600">
     <Grid>
-    
 
     </Grid>
 </Window>

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using PechicoDesktop.Models;
 
 namespace PechicoDesktop
 {
@@ -25,13 +26,12 @@ namespace PechicoDesktop
             var notifyIcon = new System.Windows.Forms.NotifyIcon
             {
                 Visible = true,
-                Text = "test",
+                Text = "PechicoDesktop",
                 Icon = System.Drawing.SystemIcons.Application,
                 ContextMenuStrip = contextMenu
             };
 
-            //notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(NotifyIcon_Click);
-
+            notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(NotifyIcon_Click);
         }
 
         private void NotifyIcon_Click(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -44,11 +44,20 @@ namespace PechicoDesktop
 
         private void ApplicationSettiong_Click(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            var viewModel = new NotificationViewModel()
+            {
+                Id = 111,
+                CompanyName = "株式会社テスト",
+                TelephoneNumber = "0822-45-3333",
+                InquiryAt = DateTime.Today
+            };
+            var notification = new Notifications(viewModel);
+            notification.ShowToast();
         }
 
         private void Exit_Click(object sender, EventArgs e)
         {
+            Notifications.Clear();
             Application.Current.Shutdown();
         } 
     }   
